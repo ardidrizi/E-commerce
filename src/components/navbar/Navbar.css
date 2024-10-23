@@ -1,11 +1,12 @@
 /* Navbar Styling */
 .navbar {
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: #2278d3; /* Dark background for contrast */
+  padding: 15px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
 .navbar-container {
@@ -16,16 +17,21 @@
 }
 
 .navbar-logo a {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  color: #fff;
+  color: #80ca2b; /* Bright accent color */
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-logo a:hover {
+  color: #ff3f3f; /* Hover color change */
 }
 
 .navbar-menu ul {
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Increase gap between menu items */
 }
 
 .navbar-menu ul li {
@@ -33,13 +39,18 @@
 }
 
 .navbar-menu ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
+  color: #fff; /* White text */
+  text-decoration: none; /* No underline */
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Smooth hover transition */
+  padding: 8px 15px;
+  border-radius: 5px;
 }
 
 .navbar-menu ul li a:hover {
-  text-decoration: underline;
+  color: #ff6b6b; /* Bright hover color */
+  background-color: rgba(255, 107, 107, 0.2); /* Slight background on hover */
 }
 
 .navbar-search {
@@ -48,25 +59,52 @@
 }
 
 .navbar-search input {
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
+  padding: 8px 15px;
+  border: 1px solid #ff6b6b;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.navbar-search input:focus {
+  border-color: #ff3f3f;
+  outline: none; /* Remove default outline */
 }
 
 .navbar-search button {
-  background-color: #fff;
+  background-color: #ff6b6b;
   border: none;
-  padding: 5px 10px;
+  color: #fff;
+  padding: 8px 15px;
+  margin-left: 8px;
+  border-radius: 30px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-search button:hover {
+  background-color: #ff3f3f;
 }
 
 .navbar-icons a {
-  color: #fff;
-  font-size: 18px;
-  margin-left: 15px;
+  color: #fff; /* White icons */
+  font-size: 20px;
+  margin-left: 20px;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .navbar-icons a:hover {
-  color: #ccc;
+  color: #ff6b6b; /* Bright color on hover */
+}
+
+/* Add some hover effect to icons */
+.navbar-icons a i {
+  transition: transform 0.3s ease;
+}
+
+.navbar-icons a:hover i {
+  transform: scale(1.2); /* Slight zoom on hover */
 }

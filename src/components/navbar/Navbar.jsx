@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -49,7 +50,7 @@ const Navbar = () => {
             placeholder="Search products..."
           />
           <button type="submit">
-            <i className="fa fa-search">Search</i>
+            <i className="fa fa-search"></i>
           </button>
         </form>
 
