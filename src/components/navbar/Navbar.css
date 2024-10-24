@@ -113,3 +113,8 @@
 .navbar-icons a:hover i {
   transform: scale(1.2); /* Slight zoom on hover */
 }
+
+.active-link {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
