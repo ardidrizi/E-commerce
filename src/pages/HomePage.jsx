@@ -1,6 +1,7 @@
-// import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Categories from "./Categories";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -37,8 +38,13 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Categories Section */}
+      <section className="categories">
+        <Categories />
+      </section>
+
       {/* Featured Products Section */}
-      {/* <section className="featured-products">
+      <section className="featured-products">
         <h2>Featured Products</h2>
         <div className="product-grid">
           {products.map((product) => (
@@ -49,25 +55,6 @@ const Homepage = () => {
               imgUrl={product.images[0] ?? ""}
             />
           ))}
-        </div>
-      </section> */}
-
-      {/* Categories Section */}
-      <section className="categories">
-        <h2>Shop by Categories</h2>
-        <div className="category-grid">
-          <div className="category-item">
-            <h3>Electronics</h3>
-          </div>
-          <div className="category-item">
-            <h3>Clothing</h3>
-          </div>
-          <div className="category-item">
-            <h3>Home Appliances</h3>
-          </div>
-          <div className="category-item">
-            <h3>Books</h3>
-          </div>
         </div>
       </section>
     </div>

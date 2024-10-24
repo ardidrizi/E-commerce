@@ -8,8 +8,14 @@ const ProductCard = ({ name, price, description, imgUrl }) => {
         <h3>{name}</h3>
         <p>{description}</p>
         <p>Price: ${price}</p>
-        <a href="#" className="btn-product">
-          Buy Now
+        <p>
+          <a href="#" className="btn-product">
+            Buy Now
+          </a>
+        </p>
+        <p></p>
+        <a href="#" className="btn-details">
+          See Details
         </a>
       </div>
     </div>
