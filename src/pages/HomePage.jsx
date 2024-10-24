@@ -1,4 +1,4 @@
-import ProductCard from "../components/ProductCard";
+// import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Homepage.css";
@@ -38,7 +38,7 @@ const Homepage = () => {
       </section>
 
       {/* Featured Products Section */}
-      <section className="featured-products">
+      {/* <section className="featured-products">
         <h2>Featured Products</h2>
         <div className="product-grid">
           {products.map((product) => (
@@ -49,29 +49,8 @@ const Homepage = () => {
               imgUrl={product.images[0] ?? ""}
             />
           ))}
-          {/* ProductCard component will go here */}
-          {/* <ProductCard
-            name="Product 1"
-            price="$29.99"
-            imgUrl="https://via.placeholder.com/150"
-          />
-          <ProductCard
-            name="Product 2"
-            price="$49.99"
-            imgUrl="https://via.placeholder.com/150"
-          />
-          <ProductCard
-            name="Product 3"
-            price="$19.99"
-            imgUrl="https://via.placeholder.com/150"
-          />
-          <ProductCard
-            name="Product 4"
-            price="$59.99"
-            imgUrl="https://via.placeholder.com/150"
-          /> */}
         </div>
-      </section>
+      </section> */}
 
       {/* Categories Section */}
       <section className="categories">

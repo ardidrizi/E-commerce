@@ -1,6 +1,17 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Navbar.css";
+
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "Shop", path: "/shop" },
+  { title: "Categories", path: "categories" },
+  // { title: "Deals", path: "deals" },
+  { title: "About Us", path: "about-us" },
+  // { title: "Contact", path: "contact" },
+];
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,26 +30,25 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <a href="/">E-Shop</a>
+          <Link to="/">E-Shop</Link>
         </div>
 
         <div className="navbar-menu">
           <ul className="navbar-links">
-            <li>
-              <a href="/shop">Shop</a>
-            </li>
-            <li>
-              <a href="/categories">Categories</a>
-            </li>
-            <li>
-              <a href="/deals">Deals</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
+            {navLinks.map((link, index) => {
+              return (
+                <li key={index}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "active-link" : ""
+                    }
+                    to={link.path}
+                  >
+                    {link.title}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
@@ -55,15 +65,15 @@ const Navbar = () => {
         </form>
 
         <div className="navbar-icons">
-          <a href="/wishlist">
+          <Link to="/wishlist">
             <i className="fa fa-heart"></i>
-          </a>
-          <a href="/account">
+          </Link>
+          <Link to="/account">
             <i className="fa fa-user"></i>
-          </a>
-          <a href="/cart">
+          </Link>
+          <Link to="/cart">
             <i className="fa fa-shopping-cart"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
