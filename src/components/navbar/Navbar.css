@@ -24,7 +24,7 @@
 .navbar-logo a {
   font-size: 28px;
   font-weight: bold;
-  color: #80ca2b; /* Bright accent color */
+  color: #ff3f3f; /* Bright accent color */
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -56,41 +56,6 @@
 .navbar-menu ul li a:hover {
   color: #ff6b6b; /* Bright hover color */
   background-color: rgba(255, 107, 107, 0.2); /* Slight background on hover */
-}
-
-.navbar-search {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-search input {
-  padding: 8px 15px;
-  border: 1px solid #ff6b6b;
-  border-radius: 30px;
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-.navbar-search input:focus {
-  border-color: #ff3f3f;
-  outline: none; /* Remove default outline */
-}
-
-.navbar-search button {
-  background-color: #ff6b6b;
-  border: none;
-  color: #fff;
-  padding: 8px 15px;
-  margin-left: 8px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-search button:hover {
-  background-color: #ff3f3f;
 }
 
 .navbar-icons a {

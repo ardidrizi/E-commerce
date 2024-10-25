@@ -1,5 +1,6 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Search from "../Search";
 // import { NavLink } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Navbar.css";
@@ -14,18 +15,6 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // Handle search functionality (e.g., redirect to search results page or filter products)
-    console.log("Searching for:", searchQuery);
-  };
-
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -52,17 +41,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <form className="navbar-search" onSubmit={handleSearchSubmit}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            placeholder="Search products..."
-          />
-          <button type="submit">
-            <i className="fa fa-search"></i>
-          </button>
-        </form>
+        <Search />
 
         <div className="navbar-icons">
           <Link to="/wishlist">
