@@ -72,3 +72,8 @@
 .product-card button:hover {
   background-color: #218838;
 }
+
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}

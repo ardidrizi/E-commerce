@@ -2,6 +2,7 @@ import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Categories from "./Categories";
+import { motion } from "framer-motion";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -28,7 +29,12 @@ const Homepage = () => {
   return (
     <div className="homepage">
       {/* Hero Section */}
-      <section className="hero">
+      <motion.section
+        className="hero"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="hero-content">
           <h1>Welcome to E-Shop</h1>
           <p>Find the best products at the best prices</p>
@@ -36,26 +42,52 @@ const Homepage = () => {
             Shop Now
           </a>
         </div>
-      </section>
+      </motion.section>
 
       {/* Categories Section */}
-      <section className="categories">
+      <motion.section
+        className="categories"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
         <Categories />
-      </section>
+      </motion.section>
 
       {/* Featured Products Section */}
       <section className="featured-products">
         <h2>Featured Products</h2>
-        <div className="product-grid">
+        <motion.div
+          className="product-grid"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, scale: 0.9 },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+        >
           {products.map((product) => (
-            <ProductCard
+            <motion.div
               key={product._id}
-              name={product.name}
-              price={product.price}
-              imgUrl={product.images[0] ?? ""}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                imgUrl={product.images[0] ?? ""}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

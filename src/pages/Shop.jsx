@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import "./Shop.css";
@@ -30,12 +31,19 @@ const Shop = () => {
         <h2 className="section-title">Featured Products</h2>
         <div className="product-grid">
           {products.map((product) => (
-            <ProductCard
+            <Link
+              to={`/shop/${product._id}`}
               key={product._id}
-              name={product.name}
-              price={product.price}
-              imgUrl={product.images[0] ?? ""}
-            />
+              className="no-underline"
+            >
+              {" "}
+              {/* Wrap ProductCard with Link */}
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                imgUrl={product.images[0] ?? ""}
+              />
+            </Link>
           ))}
         </div>
       </section>
