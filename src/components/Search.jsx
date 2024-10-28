@@ -20,7 +20,7 @@ const Search = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/products/" + currentSearchInput,
+        "http://localhost:3000/api/products/search?" + currentSearchInput,
         {
           params: { keyword: currentSearchInput },
           headers: { "Content-Type": "application/json" },
@@ -63,7 +63,7 @@ const Search = () => {
                 </Link>
               </div>
             ))
-          : !isLoading && <p>No results found</p>}
+          : !isLoading && <p></p>}
       </div>
     </div>
   );
