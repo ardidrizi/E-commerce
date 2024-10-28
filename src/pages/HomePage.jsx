@@ -3,27 +3,31 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Categories from "./Categories";
 import { motion } from "framer-motion";
+// import { useParams } from "react-router-dom";
 import "./Homepage.css";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await axios.get("http://localhost:3000/api/products", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        setProducts(resp.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          const resp = await axios.get("http://localhost:3000/api/products", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          setProducts(resp.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    }, 3000);
   }, []);
 
   return (
@@ -51,7 +55,9 @@ const Homepage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
+        {/* <Link to={``} className="btn-view-all"> */}
         <Categories />
+        {/* </Link> */}
       </motion.section>
 
       {/* Featured Products Section */}
@@ -80,11 +86,13 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <ProductCard
-                name={product.name}
-                price={product.price}
-                imgUrl={product.images[0] ?? ""}
-              />
+              <Link to={`/shop/${product._id}`} className="no-underline">
+                <ProductCard
+                  name={product.name}
+                  price={product.price}
+                  imgUrl={product.images[0] ?? ""}
+                />
+              </Link>
             </motion.div>
           ))}
         </motion.div>

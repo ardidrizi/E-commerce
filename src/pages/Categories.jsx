@@ -54,21 +54,46 @@ const Categories = () => {
     return <p>{error}</p>;
   }
 
+  const emoji = [
+    { name: "Electronics", emoji: "💻" }, // General electronics
+    { name: "Audio", emoji: "🎧" }, // Specific item under electronics
+    { name: "Wearables", emoji: "👔" },
+    { name: "Books", emoji: "📚" },
+    { name: "Furniture", emoji: "🛋️" },
+    { name: "Sports", emoji: "🏀" },
+    { name: "Kitchen", emoji: "🔪" },
+    { name: "Transport", emoji: "🚌" },
+    { name: "Home Appliances", emoji: "🍳" },
+    { name: "Home Security", emoji: "🍳" },
+    { name: "Accessories", emoji: "🪫" },
+    { name: "Beauty", emoji: "💄" },
+    { name: "Food", emoji: "🍕" },
+    { name: "Cameras", emoji: "🎥" },
+    { name: "Clothing", emoji: "👕" },
+    { name: "Mobile Phones", emoji: "📱" },
+    { name: "Computers", emoji: "💻" },
+  ];
+
   return (
     <div className="categories-container">
       <h1 className="categories-title">Shop by Category</h1>
       <div className="categories-grid">
         {categories.map((category, index) => (
           <div key={index} className="category-card">
-            <img
+            <Link to={`/categories/${category.name}`}>
+              <span className="emoji" role="img" aria-label={category.name}>
+                {emoji.find((e) => e.name === category.name)?.emoji}
+              </span>
+            </Link>
+            {/* <img
               src={category.imageUrl}
               alt={category.name}
               className="category-image"
-            />
-            <h2 className="category-name">{category.name}</h2>
-            <Link to={`/categories/${category.name}`} className="category-link">
+            /> */}
+            {/* <h2 className="category-name">{category.name}</h2> */}
+            {/* <Link to={`/categories/${category.name}`} className="category-link">
               Shop Now
-            </Link>
+            </Link> */}
           </div>
         ))}
 

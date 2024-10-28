@@ -8,10 +8,9 @@ const SelectedCategory = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(products);
+  // console.log(products);
 
   const { category } = useParams();
-  console.log(category);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,7 +37,7 @@ const SelectedCategory = () => {
       <div className="products-card">
         {products.map((product) => (
           <ProductCard
-            key={product.id}
+            key={product._id}
             name={product.name}
             price={product.price}
             description={product.description}

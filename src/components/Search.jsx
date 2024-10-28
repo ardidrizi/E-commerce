@@ -1,37 +1,71 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import "./Search.css";
 
 const Search = () => {
-  //   const [searchQuery, setSearchQuery] = useState("");
   const [currentSearchInput, setCurrentSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
-  //   const { id } = useParams();
-  //   console.log(id);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSearchChange = (e) => {
     setCurrentSearchInput(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/products/" + currentSearchInput,
+        {
+          params: { keyword: currentSearchInput },
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log(response.data);
+      setSearchResults(response.data);
+    } catch (error) {
+      setError("Failed to fetch search results.");
+      console.error("Search error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <form className="navbar-search" onSubmit={handleSearchSubmit}>
-      <input
-        type="text"
-        value={currentSearchInput}
-        onChange={handleSearchChange}
-        placeholder="Search products..."
-      />
-      <button type="submit">
-        <i className="fa fa-search"></i>
-      </button>
-    </form>
+    <div>
+      <form className="navbar-search" onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          value={currentSearchInput}
+          onChange={handleSearchChange}
+          placeholder="Search products..."
+        />
+        <button type="submit">
+          <i className="fa fa-search"></i>
+        </button>
+      </form>
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p className="error-message">{error}</p>}
+
+      <div className="search-results">
+        {searchResults.length > 0
+          ? searchResults.map((product) => (
+              <div key={product._id} className="search-result-item">
+                <Link to={`/product/${product._id}`}>
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
+                </Link>
+              </div>
+            ))
+          : !isLoading && <p>No results found</p>}
+      </div>
+    </div>
   );
 };
 

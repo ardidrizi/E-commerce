@@ -6,22 +6,24 @@ import "./Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await axios.get("http://localhost:3000/api/products", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        setProducts(resp.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
+    setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          const resp = await axios.get("http://localhost:3000/api/products", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          setProducts(resp.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }, 1000);
   }, []);
 
   return (
